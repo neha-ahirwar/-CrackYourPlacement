@@ -1,0 +1,19 @@
+//I could do this by finding the length of the linked list or by reversing the linked list
+
+class Solution {
+public:
+    int getDecimalValue(ListNode* head) {
+
+        int ans=0;
+        ListNode* temp= head;
+        while(temp!=NULL)
+        {
+            ans*=2;
+            ans+=(temp->val);
+            temp= temp->next;
+        }
+
+        return ans;
+        
+    }
+};
