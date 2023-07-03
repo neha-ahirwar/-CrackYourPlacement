@@ -1,0 +1,44 @@
+//Recursion  TC= O(n) SC= O(n) because function is called n times in worst case
+//dulicate from further element than head and then compare with the head, if same return the second element if different return the head element
+
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+      if(head==NULL|| head->next==NULL) return head;
+      ListNode* newHead= deleteDuplicates(head->next);
+      if(head->val==newHead->val) return newHead;
+      else
+      {
+          head-> next=newHead;
+          return head;
+      }  
+    }
+}; 
+
+//Iteration TC= O(n) SC= O(1)
+//Delete duplicate and change connection
+
+/*class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if(head==NULL || head->next==NULL) return head;
+        ListNode* temp= head;
+        
+        while(temp->next!=NULL)
+        {
+            if(temp->val == temp ->next -> val)
+            {
+                ListNode* del= temp->next;
+                temp->next=del->next;
+                delete del;
+            }
+            else
+            {
+                temp= temp-> next;
+            }
+
+        }
+        return head;
+        
+    }
+};*/
