@@ -1,0 +1,53 @@
+//Reverse without using extra space
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if (head==null){
+            return null;
+        
+        }
+
+        if(head.next==null){
+            return head;
+        }
+
+        ListNode preNode= null;
+        ListNode currNode= head;
+
+        while(currNode !=null){
+            ListNode nextNode= currNode.next;
+            currNode.next= preNode;
+            preNode= currNode;
+            currNode=  nextNode;
+        }
+        head= preNode;
+        return head;
+    }
+}
+
+
+
+
+/*
+ //Reversing using stack  TC= O(n) SC= O(n)
+class Solution {
+    public ListNode reverseList(ListNode head) {
+
+        Stack<Integer> valueStack= new Stack<>();
+
+        while(head !=null){
+            valueStack.push(head.val);
+            head= head.next;
+        }
+
+        ListNode reversedList=  new ListNode(Integer.MIN_VALUE); //Creating a new node with value infinity
+        ListNode ptr= reversedList; // assigning a pointer on that newly created node
+
+        while(!valueStack.isEmpty()){
+            ptr.next=new ListNode(valueStack.pop());// Now pointing and creating a new node in front of that infinite node
+            ptr= ptr.next;
+        }
+        return reversedList.next;
+       
+    }
+}
+*/
