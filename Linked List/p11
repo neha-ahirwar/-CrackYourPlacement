@@ -1,0 +1,123 @@
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        if(head==null)
+        return true;
+
+        Node mid= middle(head);
+        Node last= reverse(mid.next);
+
+        Node curr= head;
+
+        while(last!=null){
+            if(last.data!=curr)
+            return false;
+
+            last= last.next;
+            curr= curr.next;
+        }
+        return true;
+    }
+}
+Node middle(Node head){
+    Node slow=head;
+    Node fast= head;
+
+    while(fast !=null && fast.next !=null){
+        slow= slow.next;
+        fast= fast.next.next;
+    }
+    return slow;
+}
+
+ /*
+
+ //In this solution we are making a change in the given linked list if we don't have to make change then we should se stack but in that case TC= O(n) and SC= O(n)
+
+ //TC= O(n), SC= O(1)
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        
+        //Find the middle
+
+        ListNode fast= head, slow=head;
+
+        while(fast !=null && fast.next!=null){
+            fast= fast.next.next;
+            slow= slow.next;
+
+        }
+
+        if(fast!=null){         //odd nodes: let right half smaller
+            slow = slow.next;
+        }
+
+    //Reverse the second half
+    slow = reverseList(slow);
+    fast = head;
+
+    //Start  comparing one by one
+    
+    while (slow!=null){
+        if(fast.val != slow.val)
+        return false;
+
+        fast= fast.next;
+        slow= slow.next;
+    }
+    return true;
+    }
+}
+private ListNode reverseList(ListNode head){
+
+    //Code to reverse a List
+    //Reverse it by changing the direction of the pointers
+    //TC = O(n)  and SC= O(1)
+    if(head == null){
+        return null;
+    }
+
+    if(head.next ==null){
+        return head;
+    }
+
+    ListNode preNode = null;
+    ListNode currNode = head;
+
+    while(cureeNode !=null){
+        ListNode nextNode= currNode.next;
+        currNode.next = preNode;
+        preNode= currNode;
+        currNode = nextNode;
+
+    }
+
+    head = preNode;
+
+    return head;
+}
+
+*/
+
+    
+
+
+/* TC= O(n) SC= O(n)
+//Reversing a string using stack
+
+LisNode reverseWithStack(ListNode head){
+    Stack<Integer> valueStack = new Stack<>();
+    whie(head!=null){
+        valueStack.push(head.val);
+        head= head.next;
+    }
+
+    ListNode reverseList= = new ListNode(Integer.MIN_VALUE);
+    ListNode ptr= reversedList;
+
+    while (!valueStack.isEmpty()){
+        ptr.next=  new ListNode(valueStack.pop());
+        ptr = ptr.next;
+    }
+    return reversedList.next;
+}
+*/
